@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Card for showing people, products, articles">
+        <link rel="icon" href="Assets/IG.png">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title>Sebastian Kościak - Card Element</title>
+    </head>
+    <body>
+        <div id = 'wrapper'>
+            <div id = 'ball'></div>
+            <div id = 'sliding-boxes'>
+                <div class = 'box'></div>
+                <div class = 'box'></div>
+                <div class = 'box'></div>
+                <div class = 'box'>
+                    <a href = 'http://linkedin.com' aria-label="Link to LinkedIn profile" target = "_blank"><img class = 'image-sliding-boxes' alt = 'LinkedIn logo' src = 'Assets/linkedinicon.png'></a>
+                </div>
+                <div class = 'box'>
+                    <a href = 'http://facebook.com' aria-label="Link to Facebook profile" target = "_blank"><img class = 'image-sliding-boxes' alt = 'Facebook logo' src = 'Assets/facebookicon.png'></a>
+                </div>
+                <div class = 'box'>
+                    <a href = 'http://twitter.com' aria-label="Link to Witter profile" target = "_blank"><img class = 'image-sliding-boxes' alt = 'Twitter logo' src = 'Assets/twittericon.png'></a>
+                </div>
+                <div class = 'box'>
+                    <a href = 'tel:+732008403' aria-label="Link to LinkedIn profile"><img class = 'image-sliding-boxes' alt = 'WhatsApp logo' src = 'Assets/whatsappicon.png'></a>
+                </div>
+                <div class = 'box'></div>
+            </div>
+            <h1>Hello! I'm Janusz Kowalski</h1>
+            <h3>Customer Service Representative</h3>
+            <img id = 'face' alt = 'Stock people picture' src = 'Assets/face.png'>
+            <div id = 'bio'>
+                <div id = 'grid' class = ''>
+                    <h4 id = 'grid-1'>Customer Service Manager</h4><h4 id = 'grid-2'>2012 – present</h4>
+                    <ul>
+                        <li><p>Manage a team of 12 customer service associates and lead weekly discussions to set sales goals as individuals and as a team.</p></li>
+                        <li><p>Communicate directly with customers on the floor and ensure their shopping experience is pleasant, productive, and memorable, and to mediate any situations that may have escalated.</p></li>
+                        <li><p>Work with the store supervisor to train new associates through video simulations, in-class instruction, and shadowing shifts on the floor.</p></li>
+                    </ul>
+                    <h4 id = 'grid-3'>Customer Service Associate</h4><h4 id = 'grid-4'>2003 – 2012</h4>
+                    <ul>
+                        <li><p>Worked on a team with 11 other individuals to maintain a store that was clean, organized, and shopper-friendly.</p></li>
+                        <li><p>Increased personal sales goals from 10% to nearly 80% during 2003-2012 through consistent effort and regular meetings with the customer service manager.</p></li>
+                        <li><p>Achieved “Employee of the Month” upwards of 25 times and was named “Customer Service Associate of the Year” in 2005, 2008, and 2010-2012.</p></li>
+                    </ul>
+                    <h4 id = 'grid-5'>Customer Service Representative</h4><h4 id = 'grid-6'>2001 – 2003</h4>
+                    <ul>
+                        <li><p>Answered nearly 60 calls daily from customers inquiring about product usage, billing issues, or general company information.</p></li>
+                        <li><p>Received recognition on four different occasions for mediating conflict and keeping the business throughout the process.</p></li>
+                        <li><p>Learned about eight different products and competently provided customers with information about each one, complementary products, and suggestions for their usage.</p></li>
+                    </ul>
+                </div>
+                <div id = 'arrow'></div>
+            </div>
+        </div>
+    </body>
+    <script type = 'text/javascript'>
+        function init(){
+            document.getElementById('arrow').addEventListener('click', ShowBio);
+
+        };
+
+        function ShowBio() {
+            document.getElementById('arrow').style.top = '35em';
+            document.getElementById('bio').style.backgroundColor = '#f0f0f0';
+            document.getElementById('arrow').style.transform = 'rotate(180deg)';
+            document.querySelector('#grid').classList.add('scroll');
+            document.querySelector('#grid').classList.remove('scroll-hide');
+            document.getElementById('grid').style.opacity = '1';
+            document.getElementById('arrow').removeEventListener('click', ShowBio);
+            document.getElementById('arrow').addEventListener('click', HideBio);
+            document.getElementById('wrapper').addEventListener('mouseleave', () => {
+                HideBio();
+            });
+
+        }
+
+        function HideBio() {
+            document.getElementById('arrow').style.top = '9em';
+            document.getElementById('bio').style.backgroundColor = '';
+            document.getElementById('arrow').style.transform = 'rotate(0deg)';
+            document.querySelector('#grid').classList.add('scroll-hide');
+            document.querySelector('#grid').classList.remove('scroll');
+            document.getElementById('grid').style.opacity = '0'
+            document.getElementById('arrow').removeEventListener('click', HideBio);
+            document.getElementById('arrow').addEventListener('click', ShowBio);
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</html>
